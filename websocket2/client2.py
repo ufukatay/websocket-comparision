@@ -1,4 +1,3 @@
-# client.py using websocket-client
 from websocket import create_connection
 import threading
 import json
@@ -15,13 +14,13 @@ def on_message(ws):
 
         if elapsed_time >= 1.0:
             throughput = message_count / elapsed_time
-            print(f"Throughput: {throughput:.2f} messages/sec")
             message_count = 0
             start_time = time.time()
             print(f"{message}")
+            print(f"Throughput: {throughput:.2f} messages/sec")
 
 def run_client():
-    ws = create_connection("ws://localhost:8765/websocket")
+    ws = create_connection("ws://localhost:8765")
     thread = threading.Thread(target=on_message, args=(ws,))
     thread.start()
 

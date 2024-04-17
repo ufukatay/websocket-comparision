@@ -29,7 +29,7 @@ class SimpleWebSocket(tornado.websocket.WebSocketHandler):
             await asyncio.sleep(0)
 
 def make_app():
-    return tornado.web.Application([(r"/websocket", SimpleWebSocket),])
+    return tornado.web.Application([(r"/", SimpleWebSocket),])
 
 if __name__ == "__main__":
     app = make_app()
